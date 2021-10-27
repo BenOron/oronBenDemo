@@ -1,0 +1,55 @@
+@import "~bootstrap/scss/bootstrap";
+@import "component/taboolaWidget/taboolaWidget";
+
+
+
+///
+.cardSize{
+    margin-bottom:1rem;  
+    //max-height: 30rem;    
+}
+
+.homeContainer{
+    display: block;
+    margin-top: 10%;
+}
+
+.emptyWidgetCard{  
+    max-height: 16rem;
+    border:1px ;    
+    border-style: dashed ;   
+    background-color: rgb(243, 243, 243);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;    
+}
+
+.plusIcon{
+    font-size: 4rem;
+    margin-top: 2rem;
+}
+
+.emptyWidgetCard:hover{
+    background-color: rgb(206, 205, 205);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    cursor: pointer;
+}
+
+img.card-img-top{
+    max-height: 16rem;
+}
+
+.card-body{
+    padding: 0;
+}
+
+.card{
+    min-height: 20rem;
+}
+
+.widgetRow>.col{
+    padding: 10px;
+}
+
+.emptyWidgetCard:active {
+    background-color:rgb(94, 94, 94);
+    box-shadow: 0 0 5px -1px rgba(148, 148, 148, 0.6);
+}

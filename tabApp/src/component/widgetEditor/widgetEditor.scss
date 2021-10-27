@@ -1,0 +1,107 @@
+.offcanvasNavbarWidgets{
+  background-color: #39444e !important;
+  color:#9a9a9a
+}
+
+
+.tabs > h2{
+    color:#9a9a9a;
+    text-align:center;
+    font-size:2em;
+  }
+
+  .tab{
+    cursor: pointer;
+    padding:10px 20px;
+    margin:0px 2px;
+    background:#31373d;
+    display:inline-block;
+    color:#9a9a9a;
+    border-radius:3px 3px 0px 0px;
+    box-shadow: 0 0.5rem 0.8rem #00000080;
+  }
+  .panels{
+    background-color: #39444e;
+    min-height:200px;
+    width:100%;
+    max-width:500px;
+    border-radius:3px;
+    overflow:hidden;
+  }
+  .panel{
+    display:none;
+    animation: fadein .8s;
+  }
+  @keyframes fadein {
+    from {
+      opacity:0;
+    }
+    to {
+      opacity:1;
+    }
+  }
+  .panel-title{
+    font-size:1.5em;
+    font-weight:bold
+  }
+  .radio{
+    display:none;
+  }
+  #one:checked ~ .panels #one-panel,
+  #two:checked ~ .panels #two-panel,
+  #three:checked ~ .panels #three-panel{
+    display:block
+  }
+  #one:checked ~ .tabs #one-tab,
+  #two:checked ~ .tabs #two-tab,
+  #three:checked ~ .tabs #three-tab{
+
+    background-color: #39444e;
+    color:#9a9a9a;
+    border-top: 3px solid #9a9a9a;
+  }
+
+
+.contentBank{
+  padding-top: 1rem;
+  margin: 0;
+}
+.contentBank > .col{
+  & > .demo-card h4{
+    color: #a9a9a9;
+  }
+}
+
+.contentBank >.col:focus {
+  background-color: #4472c4 !important;
+  cursor: pointer;
+  padding: 0px;
+  color: #fff0;
+}
+
+.contentBank >.col:hover {
+  background-color: #4472c4 !important;
+  cursor: pointer;
+  padding: 0px;
+  color: #fff0;
+}
+.offcanvas-start{
+  width: 33rem !important;
+}
+
+.filterContentClass{
+  .dropdown{
+    padding-left: 10px;
+  }
+  .filterBtn{
+   margin-left: 10px;
+  }
+  display: flex;
+  padding: 1rem;
+}
+
+.offcanvasNavbarTitle{
+  font-weight: 500 !important;
+  color: #ffff;
+  font-size: 2rem !important;
+}

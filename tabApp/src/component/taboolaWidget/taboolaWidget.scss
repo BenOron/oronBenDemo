@@ -1,0 +1,50 @@
+.demo-card h4{
+  font-family: HelveticaNeueLTStd-Md,sans-serif;
+  width: 100%;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.2!important;
+  margin-bottom: 4px!important;
+  margin-top: 8px!important;
+  font-weight: bold;
+}
+
+
+.demo-card .name {
+  float: left;
+  font-size: 12px;
+  font-family: HelveticaNeueLTStd-Md,sans-serif;
+  color: #888;
+
+}
+
+.demo-card .space {
+  float: left;
+  width: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: #888;
+}
+
+.demo-card .cat {
+  float: left;
+  font-size: 12px;
+  color: #888;
+}
+
+.demo-card .img-bg {
+  height: 16rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.demo-card{}
+
+
+.menu{
+  float: right;
+}

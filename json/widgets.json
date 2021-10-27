@@ -1,0 +1,41 @@
+{
+  "data": [
+    {
+      "country": "US",
+      "brandName": "Bose",
+      "title": "Bose’s Latest Bluetooth Headphones Don’t Disappoint",
+      "locationWidget":1,
+      "imgSrcUri": "http://cdn.taboolasyndication.com/libtrc/static/thumbnails/a674612c9534c92e82c477a04b1ff864.jpg"
+    },
+    {
+      "country": "Great Britain",
+      "brandName": "Secret Escapes",
+      "title": "Luxury Travel Secrets – How To Get The Best Rates",
+      "locationWidget":2,
+      "imgSrcUri": "http://nativeads365.com/sites/master.n365.server.udev.se/files/styles/col_1/public/img/article/430x287infinity-pool.jpg?itok=xZ0qeQ9Z"
+    },
+    {
+      "country": "Great Britain",
+      "brandName": "Secret Escapes",
+      "title": "Luxury Travel For Dummies",
+      "imgSrcUri": "http://cdn.taboolasyndication.com/libtrc/static/thumbnails/83f2750389cf5ee27c9f2e58e44a75af.jpg"
+    }, {
+      "country": "Spain",
+      "brandName": "Life Cell",
+      "title": "La ciencia revela crema antiedad mejor que cirugía",
+      "locationWidget":4,
+      "imgSrcUri": "http://cdn.taboolasyndication.com/libtrc/static/thumbnails/eb9d2775411ec9873f04027af476c71e.jpg"
+    }, {
+      "country": "Spain",
+      "brandName": "Axe",
+      "title": "¿Cuál es tu mood de hoy?",
+      "locationWidget":3,
+      "imgSrcUri": "http://cdn.taboola.com/libtrc/static/thumbnails/a713788133bbde9a73ccabc4b9422c74.jpg"
+    }, {
+      "country": "Spain",
+      "brandName": "OxFam",
+      "title": "Firma y acaba con los paraísos fiscales",
+      "imgSrcUri": "http://cdn.taboolasyndication.com/libtrc/static/thumbnails/d23025484434f4ee1a23fd017d4b47f5.jpg"
+    }
+  ]
+}
