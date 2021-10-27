@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {Dropdown,Button} from "react-bootstrap";
 
 const FilterContent = (props) => {
@@ -9,6 +9,10 @@ const FilterContent = (props) => {
         if(key==='' || allWidgets.length < 1){
             return ''
         }
+       // dropdown-menu
+        let dropdown = document.getElementsByClassName("dropdown-menu show");
+        dropdown[0]?.classList.remove('show');
+
         return [...new Map(allWidgets.map(item =>
             [item[key], item])).values()];
     }

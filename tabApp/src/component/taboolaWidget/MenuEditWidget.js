@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import './menuEditWidgt.scss'
 import { Navbar,Container} from 'react-bootstrap';
 import TaboolaWidgetEditor from "../widgetEditor/TaboolaWidgetEditor";

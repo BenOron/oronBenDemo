@@ -42,9 +42,15 @@
   background-size: cover;
 }
 
-.demo-card{}
+.contentBank > * >  .demo-card .img-bg:hover {
+  border: 2px solid;
+}
 
 
 .menu{
+  float: right;
+}
+
+.trash{
   float: right;
 }

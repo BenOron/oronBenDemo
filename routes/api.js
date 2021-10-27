@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Widget = require('../models/widget')
 const dataResponse = require( '../json/widgets.json');
+const {response} = require("express");
 
 
 
@@ -19,6 +20,41 @@ router.get('/widgets', (req, res) => {
 
 
 
+// router.post('/widgets/location/:locationWidget', async (req, res) => {
+//     await Widget.findOneAndUpdate({locationWidget:req.body.locationWidget},{$set:{locationWidget:'-1'}}, {new: true}).then((widgets) => {
+//         if (!widgets) {
+//             return res.status(404).send();
+//         }
+//         res.send(widgets);
+//     }).catch((error) => {
+//         res.status(500).send(error);
+//     })
+// });
+
+
+router.delete('/widgets/delete/:id', (req, res) => {
+      Widget.findByIdAndDelete(req.params.id).then((widgets) => {
+        if (!widgets) {
+            return res.status(404).send();
+        }
+        res.send(widgets);
+    }).catch((error) => {
+        res.status(500).send(error);
+    })
+})
+
+
+router.patch('/widgets/update/:id', (req, res) => {
+    Widget.findByIdAndUpdate(req.params.id, req.body, {new: true}).then((widgets) => {
+        if (!widgets) {
+            return res.status(404).send();
+        }
+        res.send(widgets);
+    }).catch((error) => {
+        res.status(500).send(error);
+    })
+})
+
 
 router.post('/save', (req, res) => {
     const data = req.body;
@@ -34,6 +70,9 @@ router.post('/save', (req, res) => {
         });
     });
 });
+
+
+
 
 
 

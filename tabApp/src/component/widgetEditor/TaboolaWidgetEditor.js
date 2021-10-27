@@ -1,6 +1,5 @@
-import React, { useState,useEffect } from "react";
-import { Navbar,Offcanvas,Nav,NavDropdown,Button,FormControl,Form} from 'react-bootstrap';
-import EditorEditContent from "./EditorEditContent";
+import React, { useState } from "react";
+import { Navbar,Offcanvas} from 'react-bootstrap';
 import ChooseTab from "./ChooseTab";
 
 

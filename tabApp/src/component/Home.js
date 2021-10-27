@@ -69,7 +69,7 @@ const Home = () => {
         <>
 
             <div className='main'>
-                <ButtonGroup className="mb-2" className='editModeBtnGr'>
+                <ButtonGroup className='mb-2 editModeBtnGr'>
                     <ToggleButton
                         id="toggle-check"
                         type="checkbox"

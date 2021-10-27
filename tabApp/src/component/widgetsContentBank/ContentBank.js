@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
-import {Col, Container, Row} from "react-bootstrap";
+import React, { useState } from "react";
+import {Col, Row} from "react-bootstrap";
 import TaboolaWidget from "../taboolaWidget/TaboolaWidget";
 import FilterContent from "../widgetEditor/FilterContent";
 
 const ContentBank = (props) => {
     const allWidgets=localStorage.widgets ? JSON.parse(localStorage.widgets):false;
     const [filterWidgets,setFilterWidgets] = useState('');
-    const {widgetNumber} = props;
 
     const filterSelectFn = (filterKey) => {
         setFilterWidgets(filterKey)
@@ -31,11 +30,6 @@ const ContentBank = (props) => {
         }
         return oWidgets;
     };
-
-
-    useEffect(() => {
-
-    },[filterSelectFn]);
 
       return (
         <>

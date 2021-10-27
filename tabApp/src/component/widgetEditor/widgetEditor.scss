@@ -80,10 +80,7 @@
 }
 
 .contentBank >.col:hover {
-  background-color: #4472c4 !important;
   cursor: pointer;
-  padding: 0px;
-  color: #fff0;
 }
 .offcanvas-start{
   width: 33rem !important;
@@ -104,4 +101,23 @@
   font-weight: 500 !important;
   color: #ffff;
   font-size: 2rem !important;
+}
+
+
+.editorBtn{
+  float: right;
+  > button {
+    cursor: pointer;
+    padding: 10px 20px;
+    margin: 0px 2px;
+    background: #31373d;
+    display: inline-block;
+    color: #9a9a9a;
+    border-radius: 3px 3px 0px 0px;
+    border: none;
+  }
+}
+
+.offcanvas-header .btn-close{
+  background-color: #ffff;
 }
