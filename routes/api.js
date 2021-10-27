@@ -1,9 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Widget = require('../models/widget')
-const dataResponse = require( '../json/widgets.json');
-const {response} = require("express");
-
 
 
 // Routes
@@ -18,18 +15,6 @@ router.get('/widgets', (req, res) => {
     });
 });
 
-
-
-// router.post('/widgets/location/:locationWidget', async (req, res) => {
-//     await Widget.findOneAndUpdate({locationWidget:req.body.locationWidget},{$set:{locationWidget:'-1'}}, {new: true}).then((widgets) => {
-//         if (!widgets) {
-//             return res.status(404).send();
-//         }
-//         res.send(widgets);
-//     }).catch((error) => {
-//         res.status(500).send(error);
-//     })
-// });
 
 
 router.delete('/widgets/delete/:id', (req, res) => {

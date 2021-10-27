@@ -16,12 +16,12 @@ const ContentBank = (props) => {
         for(let i = 0 ; i<allWidgets.length;i++){
             const widget = allWidgets[i];
             if(filterWidgets !== '' &&( widget.brandName === filterWidgets || widget.country === filterWidgets)){
-                oWidgets[i] = (<Col key={i} index={i} >
+                oWidgets[i] = (<Col xs={6} xl={6}  xxl={6} sm={6} lg={6} md={6} key={i} index={i} >
                     <TaboolaWidget fromContentBank={props.widgetNumber} widget={widget} widgetText={widget.title} widgetBrandName={widget.brandName} imageWidget={widget.imgSrcUri}
                                     widgetNumber={props.selectedWidget} editMode={widget.isEmpty} />
                 </Col>);
             }else if(filterWidgets === ''){
-                oWidgets[i] = (<Col key={i} index={i} >
+                oWidgets[i] = (<Col xs={6} xl={6}  xxl={6} sm={6} lg={6} md={6} key={i} index={i} >
                     <TaboolaWidget  fromContentBank={props.widgetNumber} widget={widget} widgetText={widget.title} widgetBrandName={widget.brandName} imageWidget={widget.imgSrcUri}
                                     widgetNumber={props.selectedWidget} editMode={widget.isEmpty} />
                 </Col>);

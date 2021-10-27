@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {Container, Row, Col, ButtonGroup, ToggleButton} from 'react-bootstrap';
+import {Container, Row, Col, ButtonGroup, ToggleButton, Navbar} from 'react-bootstrap';
 import TaboolaWidget from "./taboolaWidget/TaboolaWidget";
 import './home.scss';
 import axios from "axios";
+import taboolaLogo from '../style/images/logo.png'
+import { PencilSquare ,Eye} from 'react-bootstrap-icons';
 
 const Home = () => {
 
@@ -29,6 +31,13 @@ const Home = () => {
         setEditMode(!editMode);
     };
 
+    const openEditor =(event) => {
+     if(editMode &&!document.body.classList.contains('modal-open')){
+         const index = event.currentTarget.getAttribute('index')
+         document.getElementsByClassName('toggleBtn')[index-1].click();
+     }
+    }
+
     useEffect(() => {
         localStorage.removeItem('widgets');
         getWidgets();
@@ -42,7 +51,7 @@ const Home = () => {
             const widget = widgets[i];
             const locationWidget = widget.locationWidget && widget.locationWidget > -1 ? widget.locationWidget : false;
             if (locationWidget) {
-                oWidgets[locationWidget] = (<Col key={locationWidget} index={locationWidget}>
+                oWidgets[locationWidget] = (<Col onClick={openEditor} xs={4} xl={4}  xxl={4} sm={4} lg={4} md={4} key={locationWidget} tabIndex='0' index={locationWidget}>
                     <TaboolaWidget isEditable={editMode} widget={widget} widgetText={widget.title}
                                    widgetBrandName={widget.brandName} imageWidget={widget.imgSrcUri}
                                    widgetNumber={locationWidget} editMode={widget.isEmpty}/>
@@ -68,25 +77,18 @@ const Home = () => {
     return (
         <>
 
-            <div className='main'>
-                <ButtonGroup className='mb-2 editModeBtnGr'>
-                    <ToggleButton
-                        id="toggle-check"
-                        type="checkbox"
-                        variant="secondary"
-                        checked={editMode}
-                        value="1"
-                        className='editModeBtn'
-                        onChange={toggleEditMode}
-                    >
-                        {editMode ? 'Go to preview mode' : 'Go to edit mode'}
-                    </ToggleButton>
-                </ButtonGroup>
+            <div className={!editMode ? ' main ' :'main edit'}>
+                <div className='bar'>
+                    <img src={taboolaLogo} className='logo' alt='Taboola'/>
+                </div>
                 {widgets && <Container className='homeContainer'>
                     <Row lg={3} className='widgetRow'>
-                        <GetWidgets></GetWidgets>
+                        <GetWidgets/>
                     </Row>
                 </Container>}
+                {!editMode && <div className='floatingBtn' title='Edit Mode' onClick={toggleEditMode}  ><PencilSquare  color="white" size={24} /></div> }
+                {editMode && <div className='floatingBtn' onClick={toggleEditMode}  ><Eye  color="white" size={24} /></div> }
+
             </div>
         </>)
 

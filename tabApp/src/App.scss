@@ -9,10 +9,6 @@
     //max-height: 30rem;    
 }
 
-.homeContainer{
-    display: block;
-    margin-top: 10%;
-}
 
 .emptyWidgetCard{  
     max-height: 16rem;
@@ -45,9 +41,7 @@ img.card-img-top{
     min-height: 20rem;
 }
 
-.widgetRow>.col{
-    padding: 10px;
-}
+
 
 .emptyWidgetCard:active {
     background-color:rgb(94, 94, 94);

@@ -1,6 +1,6 @@
 .offcanvasNavbarWidgets{
-  background-color: #39444e !important;
-  color:#9a9a9a
+  background-color: #fff !important;
+  color:#054164
 }
 
 
@@ -12,16 +12,14 @@
 
   .tab{
     cursor: pointer;
-    padding:10px 20px;
-    margin:0px 2px;
-    background:#31373d;
-    display:inline-block;
-    color:#9a9a9a;
-    border-radius:3px 3px 0px 0px;
-    box-shadow: 0 0.5rem 0.8rem #00000080;
+    padding: 10px 20px;
+    margin: 0px 2px;
+    display: inline-block;
+    border-radius: 6px 6px 0px 0px;
+    border: 1px solid #ccc;
+    border-bottom: 0;
   }
   .panels{
-    background-color: #39444e;
     min-height:200px;
     width:100%;
     max-width:500px;
@@ -43,6 +41,7 @@
   .panel-title{
     font-size:1.5em;
     font-weight:bold
+
   }
   .radio{
     display:none;
@@ -55,10 +54,8 @@
   #one:checked ~ .tabs #one-tab,
   #two:checked ~ .tabs #two-tab,
   #three:checked ~ .tabs #three-tab{
-
-    background-color: #39444e;
-    color:#9a9a9a;
-    border-top: 3px solid #9a9a9a;
+    background-color: #054164;
+    color: #ffffff;
   }
 
 
@@ -66,29 +63,36 @@
   padding-top: 1rem;
   margin: 0;
 }
-.contentBank > .col{
+.contentBank > div{
   & > .demo-card h4{
     color: #a9a9a9;
   }
 }
 
-.contentBank >.col:focus {
+.contentBank >div:focus {
   background-color: #4472c4 !important;
   cursor: pointer;
   padding: 0px;
   color: #fff0;
 }
 
-.contentBank >.col:hover {
+.contentBank >div:hover {
   cursor: pointer;
 }
-.offcanvas-start{
+.offcanvas-end{
   width: 33rem !important;
 }
 
 .filterContentClass{
   .dropdown{
     padding-left: 10px;
+     li{
+      padding: 10px;
+      cursor: pointer;
+      &:hover{
+        background-color: #eee;
+      }
+    }
   }
   .filterBtn{
    margin-left: 10px;
@@ -119,5 +123,22 @@
 }
 
 .offcanvas-header .btn-close{
-  background-color: #ffff;
+  background-color: #4472c4;
 }
+
+.offcanvas-header{
+  padding: 0.8rem 0.8em !important;
+  color: #054164;
+  background: #4472c4;
+}
+
+.editorBtn > button {
+  &.delete{
+    background: darkred;
+  }
+  border-radius: 30px;
+  background: #054164;
+  color: #fff;
+  font-size: 0.8rem;
+}
+

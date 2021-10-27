@@ -1,22 +1,16 @@
 import React  from "react";
 import {Form, Button} from 'react-bootstrap';
 import axios from 'axios';
-
+import {saveNewWidget} from '../../utils/util'
 
 const EditorEditContent = (props) => {
     const {currentWidget, widgetNumber} = props;
     const payloadDate = {};
 
-    const saveNewWidget = () => {
+    const saveWidget = () => {
         collectData();
         if(validateInputs()){
-            axios.post('http://localhost:8080/api/save', payloadDate)
-                .then((res) => {
-                    document.getElementsByClassName("btn-close")[0].click();
-                    window.location.reload(false);
-                }).catch((error) => {
-                console.log(error)
-            });
+            saveNewWidget(payloadDate)
         }else{
             console.error('missing data')
         }
@@ -98,16 +92,16 @@ const EditorEditContent = (props) => {
                 <Form.Control as="textarea" rows={2} defaultValue={currentWidget.imgSrcUri}/>
             </Form.Group>
             <div className='editorBtn'>
-                 <Button variant="primary" type="button" onClick={saveNewWidget}>
+                {!currentWidget && <Button  type="button" onClick={saveWidget}>
                     Add New
-                </Button>
-                {currentWidget && <Button variant="primary" type="button" onClick={updateWidget}>
+                </Button>}
+                {currentWidget && <Button  type="button" onClick={updateWidget}>
                     Update
                 </Button>}
-                {currentWidget && <Button variant="primary" type="button" onClick={clearWidget}>
+                {currentWidget && <Button  type="button" onClick={clearWidget}>
                     Remove
                 </Button>}
-                {currentWidget['locationWidget'] && <Button variant="primary" type="button" onClick={deleteWidget}>
+                {currentWidget['locationWidget'] && <Button className='delete' type="button" onClick={deleteWidget}>
                     Delete
                 </Button>}
 

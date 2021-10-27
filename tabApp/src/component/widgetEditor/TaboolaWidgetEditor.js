@@ -13,16 +13,18 @@ const TaboolaWidgetEditor = (props) => {
         setCurrentWidget(props.widget);
     }
 
+
+
     return (
         <Navbar.Offcanvas
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"
-            placement="start"
+            placement="end"
             onEntered={getCurrentWidget}
             className='offcanvasNavbarWidgets'
         >
-            <Offcanvas.Header closeButton>
-                <Offcanvas.Title id="offcanvasNavbarLabel" className='offcanvasNavbarTitle'>Widgets Editor</Offcanvas.Title>
+            <Offcanvas.Header closeButton >
+                <Offcanvas.Title id="offcanvasNavbarLabel" className='offcanvasNavbarTitle'>Content Editor</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
                 <><ChooseTab currentWidget={currentWidget} widgetNumber={props.widgetNumber}/></>

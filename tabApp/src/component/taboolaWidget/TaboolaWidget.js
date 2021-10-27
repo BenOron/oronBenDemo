@@ -37,7 +37,7 @@ const TaboolaWidget = (props) => {
     }
 
       return (
-          <div className={"demo-card true "}  tabIndex="-1">
+          <div className={"demo-card true "}   >
               <div onClick={setWidget} className="img-bg true"
                    style={imageWidget && imageWidget.length > 0 ? {backgroundImage: `url(${imageWidget})`}:{backgroundImage: `url(${defaultBackground})`}}  >
                  {isEditable && <MenuEditWidget className="" widget={widget} widgetNumber={widgetNumber}/>}

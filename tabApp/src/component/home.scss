@@ -8,10 +8,59 @@ label.editModeBtn{
   }
 }
 
+
+.floatingBtn {
+  position: fixed;
+  background: #4472c4;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  bottom: 20px;
+  right: 20px;
+}
+
 .editModeBtnGr{
   width: 100%;
 }
 
+.bar{
+  background: #4472c4;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  img{
+    height: 48px;
+    margin-left: 15px;
+  }
+}
+
 .homeContainer{
-  width: 60rem !important;
+  display: block;
+  margin-top: 6%;
+}
+@media  screen and  (max-width: 996px){
+   .homeContainer{
+     font-size: 12px;
+   }
+}
+@media  screen and  (max-width: 420px){
+  .homeContainer{
+    font-size: 8px;
+  }
+}
+
+.toggleBtn{
+  position: absolute;
+  top: -10000px;
+  visibility: hidden;
+}
+
+.main.edit .widgetRow{
+  > div{
+    cursor: pointer;
+    }
+  border: 1px dashed #ccc;
 }

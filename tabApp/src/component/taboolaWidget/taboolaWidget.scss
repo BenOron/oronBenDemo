@@ -1,20 +1,35 @@
 .demo-card h4{
   font-family: HelveticaNeueLTStd-Md,sans-serif;
   width: 100%;
-  font-size: 1rem;
+  font-size: 1em;
   color: #333;
-  line-height: 1.2!important;
-  margin-bottom: 4px!important;
-  margin-top: 8px!important;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  margin-top: 8px;
+  text-align: start;
   font-weight: bold;
 }
 
+.widgetRow> div{
+  padding: 10px;
+  border: 1px dashed transparent;
+  outline: none;
 
+}
+.main.edit{
+  .widgetRow>div{
+    &:hover {
+        box-shadow: 1px 1px 10px #333;
+        border-radius: 6px;
+    }
+  }
+}
 .demo-card .name {
   float: left;
-  font-size: 12px;
+  font-size: 0.8em;
   font-family: HelveticaNeueLTStd-Md,sans-serif;
   color: #888;
+
 
 }
 
@@ -22,18 +37,18 @@
   float: left;
   width: 10px;
   text-align: center;
-  font-size: 12px;
+  font-size: 0.8em;
   color: #888;
 }
 
 .demo-card .cat {
   float: left;
-  font-size: 12px;
+  font-size: 0.8em;
   color: #888;
 }
 
 .demo-card .img-bg {
-  height: 12rem;
+  padding-top:50%;
   background-repeat: no-repeat;
   background-position: center;
   -webkit-background-size: cover;
@@ -42,6 +57,9 @@
   background-size: cover;
 }
 
+.contentBank > * >  .demo-card .img-bg{
+height: 9em;
+}
 .contentBank > * >  .demo-card .img-bg:hover {
   border: 2px solid;
 }
