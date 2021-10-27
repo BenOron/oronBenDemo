@@ -23,7 +23,7 @@ router.get('/widgets', (req, res) => {
 router.post('/save', (req, res) => {
     const data = req.body;
     const widgets = new Widget(data);
-    Widget.save((error) => {
+    widgets.save((error) => {
         if (error) {
             res.status(500).json({ msg: 'Sorry, internal server errors' });
             return;
