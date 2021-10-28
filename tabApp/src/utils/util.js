@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const PATH = 'http://localhost:8080';
+const PATH = '';
 
 
 /**
