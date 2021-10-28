@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Container, Row, Col, ButtonGroup, ToggleButton, Navbar} from 'react-bootstrap';
+import {Container, Row, Col} from 'react-bootstrap';
 import TaboolaWidget from "./taboolaWidget/TaboolaWidget";
 import './home.scss';
 import axios from "axios";
@@ -32,17 +32,18 @@ const Home = () => {
     };
 
     const openEditor =(event) => {
-     if(editMode &&!document.body.classList.contains('modal-open')){
+     if(editMode && !document.body.classList.contains('modal-open')){
          const index = event.currentTarget.getAttribute('index')
          document.getElementsByClassName('toggleBtn')[index-1].click();
      }
     }
 
     useEffect(() => {
-        localStorage.removeItem('widgets');
-        getWidgets();
-
-    }, []);
+        if(!widgets){
+            localStorage.removeItem('widgets');
+            getWidgets();
+        }
+    }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
     const GetWidgets = () => {
         let oWidgets = [];
@@ -61,7 +62,7 @@ const Home = () => {
         }
         for (const [key, value] of Object.entries(tempLocationWidget)) {
             if(value < 1){
-                oWidgets[key] = (<Col key={key } index={key }>
+                oWidgets[key] = (<Col onClick={openEditor} key={key } index={key }>
                     <TaboolaWidget isEditable={editMode} widget={''} widgetText={''} widgetBrandName={''}
                                    widgetNumber={key } imageWidget={''}
                                    editMode={editMode}/>
@@ -76,7 +77,6 @@ const Home = () => {
 
     return (
         <>
-
             <div className={!editMode ? ' main ' :'main edit'}>
                 <div className='bar'>
                     <img src={taboolaLogo} className='logo' alt='Taboola'/>
@@ -87,8 +87,7 @@ const Home = () => {
                     </Row>
                 </Container>}
                 {!editMode && <div className='floatingBtn' title='Edit Mode' onClick={toggleEditMode}  ><PencilSquare  color="white" size={24} /></div> }
-                {editMode && <div className='floatingBtn' onClick={toggleEditMode}  ><Eye  color="white" size={24} /></div> }
-
+                {editMode && <div className='floatingBtn floatingBtnEdit' onClick={toggleEditMode}  ><Eye  color="blue" size={24} /></div> }
             </div>
         </>)
 

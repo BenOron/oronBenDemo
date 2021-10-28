@@ -1,40 +1,44 @@
 import axios from "axios";
+const PATH = 'http://localhost:8080';
 
+
+
+/**
+ * Add new widget instance
+ * @param payloadDate
+ */
 export const saveNewWidget = (payloadDate) => {
-        axios.post('http://localhost:8080/api/save', payloadDate)
+        axios.post(`${PATH}/api/save`, payloadDate)
             .then((res) => {
-                document.getElementsByClassName("btn-close")[0].click();
-                window.location.reload(false);
             }).catch((error) => {
             console.log(error)
         });
 };
-//
-// export  const deleteWidget = () => {
-//     axios.delete('http://localhost:8080/api/widgets/delete/' + currentWidget['_id'])
-//         .then((res) => {
-//             document.getElementsByClassName("btn-close")[0].click();
-//             window.location.reload(false);
-//         }).catch((error) => {
-//         console.log(error)
-//     });
-// }
-//
-//
-// const updateWidget = (clear) => {
-//     collectData();
-//     if(clear){
-//         payloadDate.locationWidget=-1;
-//     }
-//     if(validateInputs()) {
-//         axios.patch('http://localhost:8080/api/widgets/update/' + currentWidget['_id'])
-//             .then((res) => {
-//                 document.getElementsByClassName("btn-close")[0].click();
-//             }).catch((error) => {
-//             console.log(error)
-//         });
-//     }else{
-//         console.error('missing data')
-//     }
-// }
-//
+
+/**
+ * Delete widget API
+ * @param widgetId
+ */
+export  const deleteWidget = (widgetId) => {
+    axios.delete(`${PATH}/api/widgets/delete/${widgetId}`)
+        .then((res) => {
+            window.location.reload(false);
+        }).catch((error) => {
+        console.log(error)
+    });
+}
+
+/**
+ * Update widget property API
+ * @param payloadDate
+ * @param widgetId
+ */
+export const updateWidget = (payloadDate,widgetId) => {
+        axios.patch(`${PATH}/api/widgets/update/${widgetId}`,payloadDate)
+            .then((res) => {
+                document.getElementsByClassName("btn-close")[0].click();
+            }).catch((error) => {
+            console.log(error)
+        });
+}
+

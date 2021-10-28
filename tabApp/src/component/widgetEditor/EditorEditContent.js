@@ -1,55 +1,72 @@
-import React  from "react";
+import React,{useState} from "react";
 import {Form, Button} from 'react-bootstrap';
-import axios from 'axios';
-import {saveNewWidget} from '../../utils/util'
+import {saveNewWidget,deleteWidget,updateWidget} from '../../utils/util'
 
 const EditorEditContent = (props) => {
     const {currentWidget, widgetNumber} = props;
+    const {clearFromPreview, setClearFromPreview} = useState(false);
     const payloadDate = {};
+    const widgetId = currentWidget['_id'];
 
+    /**
+     * This method closing the content editor
+     * Using document selector to toggle the view
+     * reload page get new update  Todo change it redux?
+     */
+    const closeEditor = () => {
+        document.getElementsByClassName("btn-close")[0].click();
+        window.location.reload(false);
+    }
+
+
+    /**
+     * Add New widget to the content bank.
+     */
     const saveWidget = () => {
         collectData();
         if(validateInputs()){
             saveNewWidget(payloadDate)
+            closeEditor();
         }else{
             console.error('missing data')
         }
     };
 
-    const deleteWidget = () => {
-        axios.delete('http://localhost:8080/api/widgets/delete/' + currentWidget['_id'])
-            .then((res) => {
-                document.getElementsByClassName("btn-close")[0].click();
-                window.location.reload(false);
-            }).catch((error) => {
-            console.log(error)
-        });
+    /**
+     * delete selected widget from the content bank.
+     */
+    const deleteSelectedWidget = () => {
+        deleteWidget(widgetId);
+        closeEditor();
     }
 
 
-    const updateWidget = (clear) => {
+    /**
+     * Update the exist widget or clear from the preview page
+     */
+    const updateSelectedWidget = () => {
         collectData();
-        if(clear){
+        if(clearFromPreview){
             payloadDate.locationWidget=-1;
         }
         if(validateInputs()) {
-            axios.patch('http://localhost:8080/api/widgets/update/' + currentWidget['_id'])
-                .then((res) => {
-                    document.getElementsByClassName("btn-close")[0].click();
-                }).catch((error) => {
-                console.log(error)
-            });
-        }else{
-            console.error('missing data')
+            updateWidget(payloadDate,widgetId)
+            closeEditor();
         }
     }
 
-
-    const clearWidget = () => {
-        updateWidget(true)
+    /**
+     * Clear widget from the preview page
+     */
+    const clearFromPreviewPage = () => {
+        setClearFromPreview(true);
+        updateSelectedWidget()
     }
 
 
+    /**
+     * Preparing the Form data and remove
+     */
     const collectData = () => {
         payloadDate.country = document.getElementById('formCountry').value?.trim();
         payloadDate.title = document.getElementById('formTitle').value?.trim();
@@ -58,6 +75,11 @@ const EditorEditContent = (props) => {
         payloadDate.locationWidget = currentWidget.locationWidget ? currentWidget.locationWidget : widgetNumber ? widgetNumber : -1;
     }
 
+    /**
+     * Verify all the form field not empty.
+     * Todo - we can add here more verification options
+     * @returns {boolean}
+     */
     const validateInputs = () => {
         return  payloadDate['country'].length > 0 &&
             payloadDate['brandName'].length > 0 &&
@@ -95,13 +117,13 @@ const EditorEditContent = (props) => {
                 {!currentWidget && <Button  type="button" onClick={saveWidget}>
                     Add New
                 </Button>}
-                {currentWidget && <Button  type="button" onClick={updateWidget}>
+                {currentWidget && <Button  type="button" onClick={updateSelectedWidget}>
                     Update
                 </Button>}
-                {currentWidget && <Button  type="button" onClick={clearWidget}>
+                {currentWidget && <Button  type="button" onClick={clearFromPreviewPage}>
                     Remove
                 </Button>}
-                {currentWidget['locationWidget'] && <Button className='delete' type="button" onClick={deleteWidget}>
+                {currentWidget['locationWidget'] && <Button className='delete' type="button" onClick={deleteSelectedWidget}>
                     Delete
                 </Button>}
 

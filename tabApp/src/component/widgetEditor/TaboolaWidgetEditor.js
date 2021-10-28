@@ -1,18 +1,25 @@
-import React, { useState } from "react";
-import { Navbar,Offcanvas} from 'react-bootstrap';
+import React, {useState} from "react";
+import {Navbar, Offcanvas} from 'react-bootstrap';
 import ChooseTab from "./ChooseTab";
 
 
 const TaboolaWidgetEditor = (props) => {
+    const [currentWidget, setCurrentWidget] = useState(props.widget);
 
-    const [currentWidget,setCurrentWidget] = useState(props.widget);
-    if(currentWidget.length < 0 ){
-        currentWidget.widgetNumber = props.widgetNumber;
-    }
-    const getCurrentWidget= () =>{
-        setCurrentWidget(props.widget);
-    }
 
+    /**
+     * On Entered to the Editor get the selected widget
+     */
+    const getCurrentWidget = () => {
+        if (props.widget) {
+            setCurrentWidget(props.widget);
+        } else {
+            if (currentWidget.length < 0) {
+                currentWidget.widgetNumber = props.widgetNumber;
+            }
+
+        }
+    }
 
 
     return (
@@ -23,8 +30,9 @@ const TaboolaWidgetEditor = (props) => {
             onEntered={getCurrentWidget}
             className='offcanvasNavbarWidgets'
         >
-            <Offcanvas.Header closeButton >
-                <Offcanvas.Title id="offcanvasNavbarLabel" className='offcanvasNavbarTitle'>Content Editor</Offcanvas.Title>
+            <Offcanvas.Header closeButton>
+                <Offcanvas.Title id="offcanvasNavbarLabel" className='offcanvasNavbarTitle'>Content
+                    Editor</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
                 <><ChooseTab currentWidget={currentWidget} widgetNumber={props.widgetNumber}/></>

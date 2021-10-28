@@ -9,7 +9,14 @@ label.editModeBtn{
 }
 
 
+
 .floatingBtn {
+  &.floatingBtnEdit{
+    background: rgba(68, 114, 196, 0.35);
+    & > * {
+      fill:#4472c4;
+    }
+  }
   position: fixed;
   background: #4472c4;
   width: 60px;
@@ -20,6 +27,7 @@ label.editModeBtn{
   border-radius: 100px;
   bottom: 20px;
   right: 20px;
+  cursor: pointer;
 }
 
 .editModeBtnGr{
