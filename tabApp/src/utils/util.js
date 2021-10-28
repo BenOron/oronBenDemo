@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const PATH = '';
+const PATH = 'https://taboola.herokuapp.com';
 
 
 /**
