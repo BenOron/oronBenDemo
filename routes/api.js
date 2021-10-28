@@ -3,7 +3,6 @@ const router = express.Router();
 const Widget = require('../models/widget')
 
 
-// Routes
 router.get('/widgets', (req, res) => {
     Widget.find({  })
     .then((data) => {
@@ -49,7 +48,6 @@ router.post('/save', (req, res) => {
             res.status(500).json({ msg: 'Sorry, internal server errors' });
             return;
         }
-        // Widgt
         return res.json({
             msg: 'Your data has been saved!!!!!!'
         });

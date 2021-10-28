@@ -42,3 +42,18 @@ export const updateWidget = (payloadDate,widgetId) => {
         });
 }
 
+
+/**
+ * Return all Widgets
+ * @returns {Promise<unknown>}
+ */
+export const getAllWidgets = async () =>{
+    let allWidgets ='';
+    try {
+        allWidgets = await axios.get('http://localhost:8080/api/widgets');
+        console.log(allWidgets.data);
+        return allWidgets.data;
+    } catch (err) {
+        console.error(err);
+    }
+}
