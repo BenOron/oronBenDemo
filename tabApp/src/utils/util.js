@@ -60,7 +60,7 @@ export const updateWidget = (payloadDate, widgetId,clear) => {
 export const getAllWidgets = async () => {
     let allWidgets = '';
     try {
-        allWidgets = await axios.get('http://localhost:8080/api/widgets');
+        allWidgets = await axios.get(`${PATH}/api//widgets`);
         return allWidgets.data;
     } catch (err) {
         console.error(err);
