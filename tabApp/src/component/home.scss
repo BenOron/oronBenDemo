@@ -78,3 +78,17 @@ $mainTaboolaBlue: #4472c4;
     border: 1px dashed #ccc;
   }
 }
+
+
+.checkboxSave{
+  padding-top: 3rem;
+  > label{
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  > input {
+    width: 1rem;
+    height: 1rem;
+  }
+}

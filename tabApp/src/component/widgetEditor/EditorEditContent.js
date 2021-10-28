@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import {Form, Button} from 'react-bootstrap';
 import {saveNewWidget,deleteWidget,updateWidget} from '../../utils/util'
@@ -8,7 +8,8 @@ const EditorEditContent = (props) => {
     let clearFromPreview = false;
     const payloadDate = {};
     const widgetId = currentWidget['_id'];
-
+    const [addToStoreOnly , setAddToStoreOnly] = useState(false)
+    let saveToStoreOnly = addToStoreOnly;
 
     /**
      * This method closing the content editor
@@ -35,8 +36,11 @@ const EditorEditContent = (props) => {
     const saveWidget = () => {
         collectData();
         if(validateInputs()){
+            if(saveToStoreOnly){
+                payloadDate.locationWidget=-1;
+            }
             saveNewWidget(payloadDate)
-            closeEditor();
+            if(!saveToStoreOnly){closeEditor();}
         }else{
             console.error('missing data')
         }
@@ -86,8 +90,11 @@ const EditorEditContent = (props) => {
             payloadDate['imgSrcUri'].length > 0;
     }
 
-    return (
-        <Form className='formEditContent'>
+
+    const updateSetStore = () => {
+      setAddToStoreOnly(!addToStoreOnly)
+    }
+    return (<div><Form className='formEditContent'>
             <Form.Group className="mb-3" controlId="formCountry">
                 <Form.Label column="sm" lg={2}>
                     Country
@@ -113,7 +120,7 @@ const EditorEditContent = (props) => {
                 <Form.Control as="textarea" rows={2} defaultValue={currentWidget.imgSrcUri}/>
             </Form.Group>
             <div className='editorBtn'>
-                {!currentWidget && <Button  type="button" onClick={saveWidget}>
+                {currentWidget && <Button  type="button" onClick={saveWidget}>
                     Add New
                 </Button>}
                 {currentWidget && <Button  type="button" onClick={updateSelectedWidget}>
@@ -128,6 +135,11 @@ const EditorEditContent = (props) => {
 
             </div>
         </Form>
+            <div className='checkboxSave' >
+             <input type="checkbox" id="scales" name="scales" onChange={updateSetStore} />
+            <label htmlFor="scales">Add new widget only to store without add to privew</label>
+            </div>
+    </div>
     )
 }
 
