@@ -92,7 +92,11 @@ const EditorEditContent = (props) => {
 
 
     const updateSetStore = () => {
-      setAddToStoreOnly(!addToStoreOnly)
+         document.getElementById('formCountry').value = '';
+         document.getElementById('formTitle').value='';
+         document.getElementById('formBrandName').value ='';
+         document.getElementById('formImageUri').value =''
+        setAddToStoreOnly(!addToStoreOnly)
     }
     return (<div><Form className='formEditContent'>
             <Form.Group className="mb-3" controlId="formCountry">
