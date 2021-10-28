@@ -27,6 +27,19 @@ router.delete('/widgets/delete/:id', (req, res) => {
     })
 })
 
+router.get('/widgets/widget/update_location/:locationWidget', (req, res) => {
+    Widget.findByIdAndUpdate( req.params.locationWidget , {locationWidget: -1}, function (err, widget) {
+        res.json(widget);
+    })
+});
+
+
+router.get('/widgets/widget/:locationWidget', (req, res) => {
+    Widget.find({locationWidget: req.params.locationWidget}, function (err, widget) {
+        res.json(widget);
+    })
+});
+
 
 router.patch('/widgets/update/:id', (req, res) => {
     Widget.findByIdAndUpdate(req.params.id, req.body, {new: true}).then((widgets) => {

@@ -35,7 +35,7 @@ const TaboolaWidgetEditor = (props) => {
                     Editor</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-                <><ChooseTab currentWidget={currentWidget} widgetNumber={props.widgetNumber}/></>
+                <><ChooseTab currentWidget={currentWidget} widgetNumber={props.widgetNumber} /></>
             </Offcanvas.Body>
         </Navbar.Offcanvas>
     )

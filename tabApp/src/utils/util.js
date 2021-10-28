@@ -10,6 +10,7 @@ const PATH = 'https://taboola.herokuapp.com';
 export const saveNewWidget = (payloadDate) => {
     axios.post(`${PATH}/api/save`, payloadDate)
         .then((res) => {
+            window.location.reload(false);
         }).catch((error) => {
         console.log(error)
     });
@@ -23,6 +24,7 @@ export const deleteWidget = (widgetId) => {
     try {
         axios.delete(`${PATH}/api/widgets/delete/${widgetId}`)
             .then((res) => {
+                window.location.reload(false);
             }).catch((error) => {
             console.log(error)
         });
@@ -36,15 +38,14 @@ export const deleteWidget = (widgetId) => {
  * @param payloadDate
  * @param widgetId
  */
-export const updateWidget = (payloadDate, widgetId,clear) => {
+export const updateWidget = async (payloadDate, widgetId,clear) => {
     if(clear){
         payloadDate.locationWidget = -1;
     }
     try {
-        axios.patch(`${PATH}/api/widgets/update/${widgetId}`, payloadDate)
-            .then((res) => {
-                console.log('Updated')
-            }).catch((error) => {
+        await axios.patch(`${PATH}/api/widgets/update/${widgetId}`, payloadDate) .then((res) => {
+            window.location.reload(false);
+        }).catch((error) => {
             console.log(error)
         });
     } catch (err) {

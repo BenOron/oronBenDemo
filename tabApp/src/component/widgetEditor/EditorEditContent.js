@@ -18,7 +18,6 @@ const EditorEditContent = (props) => {
      */
     const closeEditor = () => {
         document.getElementsByClassName("btn-close")[0].click();
-       window.location.reload(false);
     }
 
 

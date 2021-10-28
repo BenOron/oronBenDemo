@@ -14,24 +14,16 @@ const TaboolaWidget = (props) => {
      */
     const closeEditor = () => {
         document.getElementsByClassName("btn-close")[0].click();
-        window.location.reload(false);
     }
 
     /**
      * Set new widget to preview
      */
     const setWidget = () => {
-        if (fromContentBank) {
-            if(widget.locationWidget > 0 ){
-                widget.locationWidget = fromContentBank;
-                delete widget._id;
-                saveNewWidget(widget);
-                closeEditor();
-            }else{
-                widget.locationWidget = fromContentBank;
-                updateWidget(widget, widget._id);
-                closeEditor();
-            }
+        if (fromContentBank ) {
+            widget.locationWidget = fromContentBank;
+            updateWidget(widget, widget._id);
+            closeEditor();
         }
     }
 
