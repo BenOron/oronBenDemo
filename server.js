@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 8080 ;
 
 const MONGODB_URI = 'mongodb+srv://oronbendemo:benoron123@tabcluster.ytz0u.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
-mongoose.connect(MONGODB_URI ||'mongodb://localhost/tab_widget_app',{
+mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/tab_widget_app',{
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
