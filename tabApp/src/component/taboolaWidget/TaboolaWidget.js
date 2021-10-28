@@ -40,14 +40,14 @@ const TaboolaWidget = (props) => {
      * return the widget UI
      */
     return (
-        <div className={"demo-card true "}>
+        <div className={"widgetBox true "}>
             <div onClick={setWidget} className="img-bg true"
                  style={imageWidget && imageWidget.length > 0 ? {backgroundImage: `url(${imageWidget})`} : {backgroundImage: `url(${defaultBackground})`}}>
                 {isEditable && <MenuEditWidget className="" widget={widget} widgetNumber={widgetNumber}/>}
             </div>
             <h4>{widgetText} {fromContentBank &&
             <Trash onClick={deleteWidgetFromContentBank} className="trash" color="royalblue" size={15}/>}</h4>
-            {widgetBrandName && <div className="name">Taboola</div>}
+            {widgetBrandName && <div className="provider">Taboola</div>}
             {widgetBrandName && <div className="space">|</div>}
             {widgetBrandName && <div className="cat">{widgetBrandName}</div>}
 

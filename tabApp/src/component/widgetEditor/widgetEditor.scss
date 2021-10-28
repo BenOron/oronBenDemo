@@ -1,16 +1,17 @@
-.offcanvasNavbarWidgets{
+$mainTaboolaBlue: #4472c4;
+$secondaryTaboolaBlue:#054164;
+
+.offcanvasNavbarWidgets {
   background-color: #fff !important;
-  color:#054164
-}
+  color: $secondaryTaboolaBlue;
 
-
-.tabs > h2{
-    color:#9a9a9a;
-    text-align:center;
-    font-size:2em;
+  & .tabs > h2 {
+    color: #9a9a9a;
+    text-align: center;
+    font-size: 2em;
   }
 
-  .tab{
+  & .tab {
     cursor: pointer;
     padding: 10px 20px;
     margin: 0px 2px;
@@ -19,126 +20,141 @@
     border: 1px solid #ccc;
     border-bottom: 0;
   }
-  .panels{
-    min-height:200px;
-    width:100%;
-    max-width:500px;
-    border-radius:3px;
-    overflow:hidden;
+
+  & .panels {
+    min-height: 200px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 3px;
+    overflow: hidden;
   }
-  .panel{
-    display:none;
+
+  & .panel {
+    display: none;
     animation: fadein .8s;
   }
+
   @keyframes fadein {
     from {
-      opacity:0;
+      opacity: 0;
     }
     to {
-      opacity:1;
+      opacity: 1;
     }
   }
-  .panel-title{
-    font-size:1.5em;
-    font-weight:bold
+
+  & .panel-title {
+    font-size: 1.5em;
+    font-weight: bold
 
   }
-  .radio{
-    display:none;
+
+  & .radio {
+    display: none;
   }
-  #one:checked ~ .panels #one-panel,
-  #two:checked ~ .panels #two-panel,
-  #three:checked ~ .panels #three-panel{
-    display:block
+
+  & #one:checked ~ .panels #one-panel,
+  & #two:checked ~ .panels #two-panel,
+  & #three:checked ~ .panels #three-panel {
+    display: block
   }
-  #one:checked ~ .tabs #one-tab,
-  #two:checked ~ .tabs #two-tab,
-  #three:checked ~ .tabs #three-tab{
-    background-color: #054164;
+
+  & #one:checked ~ .tabs #one-tab,
+  & #two:checked ~ .tabs #two-tab,
+  & #three:checked ~ .tabs #three-tab {
+    background-color: $secondaryTaboolaBlue;
     color: #ffffff;
   }
 
 
-.contentBank{
-  padding-top: 1rem;
-  margin: 0;
-}
-.contentBank > div{
-  & > .demo-card h4{
-    color: #a9a9a9;
+  &.contentBank {
+    padding-top: 1rem;
+    margin: 0;
   }
-}
 
-.contentBank >div:focus {
-  background-color: #4472c4 !important;
-  cursor: pointer;
-  padding: 0px;
-  color: #fff0;
-}
-
-.contentBank >div:hover {
-  cursor: pointer;
-}
-.offcanvas-end{
-  width: 33rem !important;
-}
-
-.filterContentClass{
-  .dropdown{
-    padding-left: 10px;
-     li{
-      padding: 10px;
-      cursor: pointer;
-      &:hover{
-        background-color: #eee;
-      }
+  &.contentBank > div {
+    & > .widgetBox h4 {
+      color: #a9a9a9;
     }
   }
-  .filterBtn{
-   margin-left: 10px;
-  }
-  display: flex;
-  padding: 1rem;
-}
 
-.offcanvasNavbarTitle{
-  font-weight: 500 !important;
-  color: #ffff;
-  font-size: 2rem !important;
-}
-
-
-.editorBtn{
-  float: right;
-  > button {
+  &.contentBank > div:focus {
+    background-color: $mainTaboolaBlue !important;
     cursor: pointer;
-    padding: 10px 20px;
-    margin: 0px 2px;
-    background: #31373d;
-    display: inline-block;
-    color: #9a9a9a;
-    border-radius: 3px 3px 0px 0px;
-    border: none;
+    padding: 0;
+    color: #fff0;
   }
-}
 
-.offcanvas-header .btn-close{
-  background-color: #4472c4;
-}
-
-.offcanvas-header{
-  padding: 0.8rem 0.8em !important;
-  color: #054164;
-  background: #4472c4;
-}
-
-.editorBtn > button {
-  &.delete{
-    background: darkred;
+  &.contentBank > div:hover {
+    cursor: pointer;
   }
-  border-radius: 30px;
-  background: #054164;
-  color: #fff;
-  font-size: 0.8rem;
+
+  &.offcanvas-end {
+    width: 33rem !important;
+  }
+
+  & .filterContentClass {
+    .dropdown {
+      padding-left: 10px;
+
+      li {
+        padding: 10px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #eee;
+        }
+      }
+    }
+
+    .filterBtn {
+      margin-left: 10px;
+    }
+
+    display: flex;
+    padding: 1rem;
+  }
+
+  & .offcanvasNavbarTitle {
+    font-weight: 500 !important;
+    color: #ffff;
+    font-size: 2rem !important;
+  }
+
+
+  & .editorBtn {
+    float: right;
+
+    > button {
+      cursor: pointer;
+      padding: 10px 20px;
+      margin: 0px 2px;
+      background: #31373d;
+      display: inline-block;
+      color: #9a9a9a;
+      border-radius: 3px 3px 0px 0px;
+      border: none;
+    }
+  }
+
+  & .offcanvas-header {
+    padding: 0.8rem 0.8em !important;
+    color: $secondaryTaboolaBlue;
+    background: $mainTaboolaBlue;
+  }
+
+  & .editorBtn > button {
+    &.delete {
+      background: darkred;
+    }
+
+    border-radius: 30px;
+    background: $secondaryTaboolaBlue;
+    color: #fff;
+    font-size: 0.8rem;
+  }
+
+
 }
+
 
