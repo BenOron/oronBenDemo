@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import {Container, Row, Col} from 'react-bootstrap';
 import TaboolaWidget from "./taboolaWidget/TaboolaWidget";
 import './home.scss';
-import axios from "axios";
 import taboolaLogo from '../style/images/logo.png'
 import {PencilSquare, Eye} from 'react-bootstrap-icons';
 import {getAllWidgets} from "../utils/util";
@@ -113,6 +112,8 @@ const Home = () => {
                 {editMode &&
                 <div className='floatingBtn floatingBtnEdit' onClick={toggleEditMode}><Eye color="blue" size={24}/>
                 </div>}
+
+
             </div>
         </>)
 

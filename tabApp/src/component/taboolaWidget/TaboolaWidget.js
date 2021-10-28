@@ -2,11 +2,10 @@ import React from "react";
 import MenuEditWidget from "./MenuEditWidget";
 import defaultBackground from '../../style/images/emptyState.png';
 import {Trash} from 'react-bootstrap-icons';
-import {updateWidget, deleteWidget} from "../../utils/util";
+import {updateWidget, deleteWidget, saveNewWidget} from "../../utils/util";
 
 const TaboolaWidget = (props) => {
     const {imageWidget, widgetText, widgetNumber, widgetBrandName, widget, isEditable, fromContentBank} = props;
-
 
     /**
      * This method closing the content editor
@@ -23,9 +22,16 @@ const TaboolaWidget = (props) => {
      */
     const setWidget = () => {
         if (fromContentBank) {
-            widget.locationWidget = fromContentBank;
-            updateWidget(widget, widget._id);
-            closeEditor();
+            if(widget.locationWidget > 0 ){
+                widget.locationWidget = fromContentBank;
+                delete widget._id;
+                saveNewWidget(widget);
+                closeEditor();
+            }else{
+                widget.locationWidget = fromContentBank;
+                updateWidget(widget, widget._id);
+                closeEditor();
+            }
         }
     }
 
@@ -33,7 +39,8 @@ const TaboolaWidget = (props) => {
      * delete selected widget from the content bank.
      */
     const deleteWidgetFromContentBank = () => {
-        deleteWidget(widget.id);
+        deleteWidget(widget._id);
+        closeEditor();
     }
 
     /**

@@ -1,7 +1,6 @@
 
 .main.edit{
-  & > div{
-    padding: 10px;
+  & > .widgetRow > div{
     border: 1px dashed transparent;
     outline: none;
   }

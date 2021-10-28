@@ -1,23 +1,33 @@
-import React,{useState} from "react";
+import React from "react";
+
 import {Form, Button} from 'react-bootstrap';
 import {saveNewWidget,deleteWidget,updateWidget} from '../../utils/util'
 
 const EditorEditContent = (props) => {
     const {currentWidget, widgetNumber} = props;
-    const {clearFromPreview, setClearFromPreview} = useState(false);
+    let clearFromPreview = false;
     const payloadDate = {};
     const widgetId = currentWidget['_id'];
+
 
     /**
      * This method closing the content editor
      * Using document selector to toggle the view
-     * reload page get new update  Todo change it redux?
+     * reload page get new update  Todo: change it redux?
      */
     const closeEditor = () => {
         document.getElementsByClassName("btn-close")[0].click();
-        window.location.reload(false);
+       window.location.reload(false);
     }
 
+
+    /**
+     * Clear widget from the preview page
+     */
+    const clearFromPreviewPage = () => {
+        clearFromPreview = true;
+        updateSelectedWidget();
+    }
 
     /**
      * Add New widget to the content bank.
@@ -35,9 +45,9 @@ const EditorEditContent = (props) => {
     /**
      * delete selected widget from the content bank.
      */
-    const deleteSelectedWidget = () => {
-        deleteWidget(widgetId);
-        closeEditor();
+    const deleteSelectedWidget = async () => {
+       deleteWidget(widgetId);
+       closeEditor();
     }
 
 
@@ -46,21 +56,10 @@ const EditorEditContent = (props) => {
      */
     const updateSelectedWidget = () => {
         collectData();
-        if(clearFromPreview){
-            payloadDate.locationWidget=-1;
-        }
         if(validateInputs()) {
-            updateWidget(payloadDate,widgetId)
+            updateWidget(payloadDate,widgetId,clearFromPreview)
             closeEditor();
         }
-    }
-
-    /**
-     * Clear widget from the preview page
-     */
-    const clearFromPreviewPage = () => {
-        setClearFromPreview(true);
-        updateSelectedWidget()
     }
 
 
