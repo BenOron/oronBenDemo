@@ -2,7 +2,7 @@ import React from "react";
 import MenuEditWidget from "./MenuEditWidget";
 import defaultBackground from '../../style/images/emptyState.png';
 import {Trash} from 'react-bootstrap-icons';
-import {updateWidget, deleteWidget, saveNewWidget} from "../../utils/util";
+import {updateWidget, deleteWidget} from "../../utils/util";
 
 const TaboolaWidget = (props) => {
     const {imageWidget, widgetText, widgetNumber, widgetBrandName, widget, isEditable, fromContentBank} = props;
@@ -19,13 +19,24 @@ const TaboolaWidget = (props) => {
     /**
      * Set new widget to preview
      */
-    const setWidget = () => {
+    const setWidget = async () => {
         if (fromContentBank ) {
+            await replaceWidget();
             widget.locationWidget = fromContentBank;
-            updateWidget(widget, widget._id);
+            await updateWidget(widget, widget._id);
             closeEditor();
         }
+
     }
+
+    const replaceWidget = async () => {
+        if(localStorage.replacedWidget?.length){
+            const previousWidget = JSON.parse(localStorage.replacedWidget);
+            await updateWidget(previousWidget, previousWidget._id,true,true);
+            localStorage.removeItem('replacedWidget');
+        }
+    }
+
 
     /**
      * delete selected widget from the content bank.

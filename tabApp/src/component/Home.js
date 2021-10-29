@@ -41,14 +41,30 @@ const Home = () => {
     const openEditor = (event) => {
         if (editMode && !document.body.classList.contains('modal-open')) {
             const index = event.currentTarget.getAttribute('index')
-            document.getElementsByClassName('toggleBtn')[index - 1].click();
-        }
+            document.getElementsByClassName('toggleBtn')[index -1].click();
+            setPreviousWidget(index);
+         }
     }
+
+
+    const setPreviousWidget = (index) => {
+        localStorage.removeItem('replacedWidget')
+        const allWidgets =  JSON.parse(localStorage.getItem('widgets'));
+        allWidgets.filter(function (widget){
+            if(widget.locationWidget === parseInt(index)){
+                localStorage.setItem('replacedWidget',JSON.stringify(widget));
+            }
+            return false;
+        });
+    }
+
+
 
     /**
      * Update the Don & localStorage once ([]) with the widgets
      */
     useEffect(() => {
+        localStorage.removeItem('replacedWidget');
         if (!widgets) {
             localStorage.removeItem('widgets');
             getWidgets();
@@ -112,8 +128,6 @@ const Home = () => {
                 {editMode &&
                 <div className='floatingBtn floatingBtnEdit' onClick={toggleEditMode}><Eye color="blue" size={24}/>
                 </div>}
-
-
             </div>
         </>)
 

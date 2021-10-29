@@ -37,14 +37,17 @@ export const deleteWidget = (widgetId) => {
  * Update widget property API
  * @param payloadDate
  * @param widgetId
+ * @param clear for remove from home screen
+ * @param replace for not reload page
+ *
  */
-export const updateWidget = async (payloadDate, widgetId,clear) => {
+export const updateWidget = async (payloadDate, widgetId,clear,replace) => {
     if(clear){
         payloadDate.locationWidget = -1;
     }
     try {
-        await axios.patch(`${PATH}/api/widgets/update/${widgetId}`, payloadDate) .then((res) => {
-            window.location.reload(false);
+        await axios.patch(`${PATH}/api/widgets/update/${widgetId}`, payloadDate).then((res) => {
+            if(!replace){window.location.reload(false)}
         }).catch((error) => {
             console.log(error)
         });
