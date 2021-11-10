@@ -7,13 +7,13 @@ const PATH = 'https://taboola.herokuapp.com';
  * Add new widget instance
  * @param payloadDate
  */
-export const saveNewWidget = (payloadDate) => {
-    axios.post(`${PATH}/api/save`, payloadDate)
-        .then((res) => {
-            window.location.reload(false);
-        }).catch((error) => {
-        console.log(error)
-    });
+export const saveNewWidget = async (payloadDate) => {
+        axios.post(`${PATH}/api/save`, payloadDate)
+            .then((res) => {
+                window.location.reload(false);
+            }).catch((error) => {
+            console.log(error)
+        });
 };
 
 /**
@@ -68,5 +68,22 @@ export const getAllWidgets = async () => {
         return allWidgets.data;
     } catch (err) {
         console.error(err);
+    }
+}
+
+/**
+ * retrun if widget exist
+ * @param payloadDate
+ * @returns {Promise<boolean>}
+ */
+export const isWidgetExist = async (payloadDate) => {
+    delete payloadDate.locationWidget;
+    let existWidgets = '';
+    try {
+        existWidgets = await axios.patch(`${PATH}/api/widgets/widget/find`,payloadDate);
+        return existWidgets.data.length > 0;
+    } catch (err) {
+       // console.error(err);
+        return false;
     }
 }

@@ -33,6 +33,16 @@ router.get('/widgets/widget/update_location/:locationWidget', (req, res) => {
     })
 });
 
+/**
+ * Find widget by payload
+ */
+router.patch('/widgets/widget/find/', (req, res) => {
+    Widget.find( req.body , function (err, widget) {
+        res.json(widget);
+    })
+});
+
+
 
 router.get('/widgets/widget/:locationWidget', (req, res) => {
     Widget.find({locationWidget: req.params.locationWidget}, function (err, widget) {

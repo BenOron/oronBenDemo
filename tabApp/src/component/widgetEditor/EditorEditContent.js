@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 import {Form, Button} from 'react-bootstrap';
-import {saveNewWidget,deleteWidget,updateWidget} from '../../utils/util'
+import {saveNewWidget, deleteWidget, updateWidget, isWidgetExist} from '../../utils/util'
 
 const EditorEditContent = (props) => {
     const {currentWidget, widgetNumber} = props;
@@ -32,14 +32,20 @@ const EditorEditContent = (props) => {
     /**
      * Add New widget to the content bank.
      */
-    const saveWidget = () => {
+    const saveWidget = async () => {
         collectData();
         if(validateInputs()){
             if(saveToStoreOnly){
                 payloadDate.locationWidget=-1;
             }
-            saveNewWidget(payloadDate)
-            if(!saveToStoreOnly){closeEditor();}
+            //check  if widget  exist
+            const widgetExist  = await isWidgetExist(payloadDate);
+            if(widgetExist) {
+               alert("Widget already exist in content store");
+            }else{
+                await saveNewWidget(payloadDate)
+            }
+            if(!saveToStoreOnly && !widgetExist){closeEditor();}
         }else{
             console.error('missing data')
         }
@@ -123,9 +129,9 @@ const EditorEditContent = (props) => {
                 <Form.Control as="textarea" rows={2} defaultValue={currentWidget.imgSrcUri}/>
             </Form.Group>
             <div className='editorBtn'>
-                {currentWidget && <Button  type="button" onClick={saveWidget}>
+                 <Button  type="button" onClick={saveWidget}>
                     Add New
-                </Button>}
+                </Button>
                 {currentWidget && <Button  type="button" onClick={updateSelectedWidget}>
                     Update
                 </Button>}

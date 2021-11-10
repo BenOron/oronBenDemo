@@ -50,12 +50,14 @@ const Home = () => {
     const setPreviousWidget = (index) => {
         localStorage.removeItem('replacedWidget')
         const allWidgets =  JSON.parse(localStorage.getItem('widgets'));
-        allWidgets.filter(function (widget){
-            if(widget.locationWidget === parseInt(index)){
-                localStorage.setItem('replacedWidget',JSON.stringify(widget));
-            }
-            return false;
-        });
+        if(allWidgets){
+            allWidgets.filter(function (widget){
+                if(widget.locationWidget === parseInt(index)){
+                    localStorage.setItem('replacedWidget',JSON.stringify(widget));
+                }
+                return false;
+            });
+        }
     }
 
 
